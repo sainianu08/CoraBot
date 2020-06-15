@@ -1,17 +1,16 @@
-﻿using Microsoft.Bot.Builder;
+﻿using System.Collections.Generic;
+using Microsoft.Bot.Builder;
 using Microsoft.Bot.Connector;
 using Microsoft.Bot.Schema;
 using Shared.Models;
 using Shared.Models.Helpers;
-using System;
-using System.Collections.Generic;
 
 namespace Shared
 {
     public static class Phrases
     {
         public const string ProjectName = "CORA";
-        public const string ProjectWebsite = "Bing.com/CORA";
+        public const string ProjectWebsite = "https://corabot.org";
         public static List<string> ValidChannels = new List<string>() { Channels.Emulator, Channels.Sms };
 
         public static string EnterNumber = "(enter a number)";
@@ -63,7 +62,7 @@ namespace Shared
             {
                 var list = new List<string>();
 
-                if (isVerifiedOrganization)
+                if(isVerifiedOrganization)
                 {
                     list.Add(Request);
                 }
@@ -147,7 +146,7 @@ namespace Shared
 
             public static string GetReminderFrequency(User user)
             {
-                if (user.ContactEnabled)
+                if(user.ContactEnabled)
                 {
                     return $"I will contact you *{user.ReminderFrequency.ToString()}* to update your need. This frequency and time can be customized from the options menu.";
                 }
